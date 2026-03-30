@@ -10,7 +10,9 @@ public class MatriculaService {
 
     public String registrar(String estudiante, int creditos) {
 
-
+        if (!validador.aproboPrerequisitos(estudiante)) {
+            return "No cumple prerrequisitos";
+        }
 
         if (validador.hayCruceHorario(estudiante)) {
             return "Horario cruzado";
@@ -20,9 +22,7 @@ public class MatriculaService {
             return "No hay vacantes";
         }
 
-        if (validador.esAlumnoNuevo(estudiante) && creditos > 12) {
-            return "Excede límite de créditos para alumno nuevo";
-        }
+
 
         if (creditos > 20) {
             return "Excede máximo de créditos";
