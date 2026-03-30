@@ -22,7 +22,9 @@ public class MatriculaService {
             return "No hay vacantes";
         }
 
-
+        if (validador.esAlumnoNuevo(estudiante) && creditos > 12) {
+            return "Excede límite de créditos para alumno nuevo";
+        }
 
         if (creditos > 20) {
             return "Excede máximo de créditos";
